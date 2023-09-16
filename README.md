@@ -27,21 +27,26 @@
     node_cpu_seconds_total{instance="node-exporter2:9100"}
     node_ipvs_connections_total
 ---
-* docker stop node-exporter1
-* nano Prometheus_Flask.py
+    docker stop node-exporter1
+    nano Prometheus_Flask.py
+---
 * you need to deploy this code on the same docker network as Prometheus. 
 * To do this, create a file named Dockerfile in the /home/project
-* docker build -t Prometheus_Flask .
-* docker run -d --name Prometheus_Flask -p 8081:8080 --network monitor Prometheus_Flask
+---
+    docker build -t Prometheus_Flask .
+    docker run -d --name Prometheus_Flask -p 8081:8080 --network monitor Prometheus_Flask
 * You can check web on that port
-* docker restart prometheus
-* curl localhost:8081
-* curl localhost:8081/home
-* curl localhost:8081/contact
+---
+    docker restart prometheus
+    curl localhost:8081
+    curl localhost:8081/home
+    curl localhost:8081/contact
+---
 * Use these queries to check python app:
-* flask_http_request_duration_seconds_bucket
-* flask_http_request_total
-* process_virtual_memory_bytes
+---
+    flask_http_request_duration_seconds_bucket
+    flask_http_request_total
+    process_virtual_memory_bytes
 ---
 # Steps for Grafana :
 
