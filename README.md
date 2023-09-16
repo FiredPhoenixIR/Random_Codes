@@ -6,7 +6,8 @@
     Determine the status of the targets
     Identify information about the targets and visualize it with graphs
     Instrument a Python Flask application to be monitored by Prometheus
-* docker pull bitnami/node-exporter:latest
+    
+    docker pull bitnami/node-exporter:latest
 * docker pull bitnami/prometheus:latest
 * docker network create monitor
 * docker run -d --name node-exporter1 -p 9101:9100 --network monitor bitnami/node-exporter:latest
