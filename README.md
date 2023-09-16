@@ -13,7 +13,8 @@
 * docker run -d --name prometheus -p 9090:9090 --network monitor \
 -v $(pwd)/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml \
 bitnami/prometheus:latest
---- # You can check web on that port
+---
+# You can check web on that port
 # some premethues queries :
 node_cpu_seconds_total
 node_cpu_seconds_total{instance="node-exporter2:9100"}
