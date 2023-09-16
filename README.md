@@ -51,7 +51,40 @@
 ---
 # Steps for Grafana :
 
+    Use https://github.com/FiredPhoenixIR/ondaw-prometheus-grafana-lab
     Deploy Prometheus to OpenShift
     Deploy Grafana to OpenShift
     Connect Prometheus as a datasource for Grafana
     Create a dashboard with Grafana
+
+* Use the oc create deployment command to deploy 3 node exporters
+---
+    oc create deployment node-exporter1 --port=9100 --image=bitnami/node-exporter:latest
+    oc create deployment node-exporter2 --port=9100 --image=bitnami/node-exporter:latest
+    oc create deployment node-exporter3 --port=9100 --image=bitnami/node-exporter:latest
+---
+* use the oc expose command to create services that expose the 3 node exporters so that Prometheus can communicate with them
+---
+    oc expose deploy node-exporter1 --port=9100 --type=ClusterIP
+    oc expose deploy node-exporter2 --port=9100 --type=ClusterIP
+    oc expose deploy node-exporter3 --port=9100 --type=ClusterIP
+---
+* Check that the pods are up and running
+---
+    oc get pods
+---
+* Step 2: Deploy Prometheus
+* While normally you would modify configuration files to configure Prometheus, this is not the case for Kubernetes.
+* For a Kubernetes environment the proper appoach is to use a ConfigMap
+* This makes it easy to change the configuraton later. You will find the configuration files from which to make the ConfigMap in a folder named ./config.
+* You will also need Kubernetes manifests to describe the Prometheus deployment and to link the ConfigMap with the Prometheus.
+* These manifests can be found in the ./deploy folder.
+---
+    oc create configmap prometheus-config \
+       --from-file=prometheus=./config/prometheus.yml \
+       --from-file=prometheus-alerts=./config/alerts.yml
+---
+    oc apply -f deploy/prometheus-deployment.yaml
+---
+    oc get pods -l app=prometheus
+---
