@@ -6,7 +6,7 @@
     Determine the status of the targets
     Identify information about the targets and visualize it with graphs
     Instrument a Python Flask application to be monitored by Prometheus
-
+---
     docker pull bitnami/node-exporter:latest
     
 * docker pull bitnami/prometheus:latest
