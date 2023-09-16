@@ -8,24 +8,23 @@
     Instrument a Python Flask application to be monitored by Prometheus
 ---
     docker pull bitnami/node-exporter:latest
-    
-* docker pull bitnami/prometheus:latest
-* docker network create monitor
-* docker run -d --name node-exporter1 -p 9101:9100 --network monitor bitnami/node-exporter:latest
-* docker run -d --name node-exporter2 -p 9102:9100 --network monitor bitnami/node-exporter:latest
-* docker run -d --name node-exporter3 -p 9103:9100 --network monitor bitnami/node-exporter:latest
-* docker ps | grep node-exporter
-* touch /home/project/prometheus.yml
+    docker pull bitnami/prometheus:latest
+    docker network create monitor
+    docker run -d --name node-exporter1 -p 9101:9100 --network monitor bitnami/node-exporter:latest
+    docker run -d --name node-exporter2 -p 9102:9100 --network monitor bitnami/node-exporter:latest
+    docker run -d --name node-exporter3 -p 9103:9100 --network monitor bitnami/node-exporter:latest
+    docker ps | grep node-exporter
+    touch /home/project/prometheus.yml
 ---
-* docker run -d --name prometheus -p 9090:9090 --network monitor \
--v $(pwd)/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml \
-bitnami/prometheus:latest
+    docker run -d --name prometheus -p 9090:9090 --network monitor \
+    -v $(pwd)/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml \
+    bitnami/prometheus:latest
 ---
 * You can check web on that port
-* some premethues queries :
-* node_cpu_seconds_total
-* node_cpu_seconds_total{instance="node-exporter2:9100"}
-* node_ipvs_connections_total
+* some premethues queries:
+    node_cpu_seconds_total
+    node_cpu_seconds_total{instance="node-exporter2:9100"}
+    node_ipvs_connections_total
 ---
 * docker stop node-exporter1
 * nano Prometheus_Flask.py
