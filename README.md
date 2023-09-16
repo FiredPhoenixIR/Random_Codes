@@ -1,7 +1,7 @@
 # Random_Codes
 
 * Steps for premethues :
-docker pull bitnami/node-exporter:latest
+- docker pull bitnami/node-exporter:latest
 docker pull bitnami/prometheus:latest
 docker network create monitor
 docker run -d --name node-exporter1 -p 9101:9100 --network monitor bitnami/node-exporter:latest
