@@ -1,6 +1,6 @@
 # Random_Codes
 
-* Steps for premethues :
+# Steps for premethues :
 * docker pull bitnami/node-exporter:latest
 * docker pull bitnami/prometheus:latest
 * docker network create monitor
@@ -35,3 +35,4 @@ bitnami/prometheus:latest
 * flask_http_request_duration_seconds_bucket
 * flask_http_request_total
 * process_virtual_memory_bytes
+---
