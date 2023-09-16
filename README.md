@@ -22,6 +22,7 @@
 ---
 * You can check web on that port
 * some premethues queries:
+---
     node_cpu_seconds_total
     node_cpu_seconds_total{instance="node-exporter2:9100"}
     node_ipvs_connections_total
