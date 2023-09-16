@@ -14,3 +14,11 @@ scrape_configs:
       - targets: ['node-exporter3:9100']
         labels:
           group: 'monitoring_node_ex3'
+# Add this to monitor Python Flask Server
+#
+# - job_name: 'monitorPrometheus_Flask'
+#   static_configs:
+#     - targets: ['Prometheus_Flask:8080']
+#       labels:
+#         group: 'monitoring_python'
+#
