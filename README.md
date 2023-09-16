@@ -42,3 +42,9 @@ bitnami/prometheus:latest
 * flask_http_request_total
 * process_virtual_memory_bytes
 ---
+# Steps for Grafana :
+
+    Deploy Prometheus to OpenShift
+    Deploy Grafana to OpenShift
+    Connect Prometheus as a datasource for Grafana
+    Create a dashboard with Grafana
