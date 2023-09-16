@@ -83,8 +83,24 @@
     oc create configmap prometheus-config \
        --from-file=prometheus=./config/prometheus.yml \
        --from-file=prometheus-alerts=./config/alerts.yml
----
     oc apply -f deploy/prometheus-deployment.yaml
----
     oc get pods -l app=prometheus
 ---
+* Step 3: Deploy Grafana
+* use the oc expose command to expose the grafana service with an OpenShift route. Routes are a special feature of OpenShift that makes it easier to use for developers.
+---
+    oc apply -f deploy/grafana-deployment.yaml
+    oc expose svc grafana
+---
+* Use the following oc patch command to enable TLS and the https:// protocol for the route.
+---
+    oc patch route grafana -p '{"spec":{"tls":{"termination":"edge","insecureEdgeTerminationPolicy":"Redirect"}}}'
+---
+* Step 4: Log in to Grafana
+* Use the oc describe command along with grep to extract the URL of the Requested Host for the grafana route:
+---
+    oc describe route grafana | grep "Requested Host:"
+---
+* Check URL and define source in Grafana UI adding URL : http://prometheus:9090
+* Step 6: Create a Dashboard
+* You will use a precreated template provided by Grafana Dashboard. This template is identified by the id 1860.
