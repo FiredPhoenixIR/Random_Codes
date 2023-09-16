@@ -31,7 +31,7 @@ bitnami/prometheus:latest
 * curl localhost:8081
 * curl localhost:8081/home
 * curl localhost:8081/contact
-# Use these queries to check python app:
+* Use these queries to check python app:
 * flask_http_request_duration_seconds_bucket
 * flask_http_request_total
 * process_virtual_memory_bytes
