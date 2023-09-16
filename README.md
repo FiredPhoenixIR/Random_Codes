@@ -1,6 +1,6 @@
 # Random_Codes
 
-# Steps for premethues :
+# Steps for Prometheus :
     Configure the targets for Prometheus to monitor
     Create queries to get the metrics about the target
     Determine the status of the targets
