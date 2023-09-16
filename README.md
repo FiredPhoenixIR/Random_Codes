@@ -35,6 +35,7 @@
 ---
     docker build -t Prometheus_Flask .
     docker run -d --name Prometheus_Flask -p 8081:8080 --network monitor Prometheus_Flask
+---
 * You can check web on that port
 ---
     docker restart prometheus
